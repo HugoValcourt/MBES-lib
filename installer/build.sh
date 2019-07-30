@@ -10,5 +10,4 @@ cd installer/build
 
 cmake ..
 cpack
-./MBES-lib-1.0.0-Linux.run
 cd ../..
