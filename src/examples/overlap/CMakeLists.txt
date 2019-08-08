@@ -9,6 +9,5 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 add_definitions(${PCL_DEFINITIONS})
 
-add_executable (overlap overlap.cpp)
+add_executable (overlap overlap.cpp ../../getopt.c)
 target_link_libraries (overlap ${PCL_LIBRARIES})
-
