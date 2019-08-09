@@ -4,6 +4,8 @@ set version=%1
 set installer_dir="installer"
 set installer_build_dir="installer\build"
 
+call Scripts\set_installer_version.bat %version%
+
 make
 make pcl-viewer
 make overlap
