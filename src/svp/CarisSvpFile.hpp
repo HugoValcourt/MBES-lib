@@ -7,8 +7,8 @@
  * Author: jordan
  */
 
-#ifndef CARISSVP_HPP
-#define CARISSVP_HPP
+#ifndef CARISSVPFILE_HPP
+#define CARISSVPFILE_HPP
 
 #include <vector>
 #include <string>
@@ -16,11 +16,14 @@
 
 #include "SoundVelocityProfile.hpp"
 
-class CarisSVP {
+class CarisSvpFile {
 private:
 
     /**Vector of SoundVelocityProfile*/
     std::vector<SoundVelocityProfile*> svps;
+
+    // Filename inside svp file
+    std::string fileName;
 
     void clearSVPs() {
         for (unsigned int i = 0; i < svps.size(); ++i) {
@@ -67,11 +70,13 @@ private:
 
 public:
 
-    CarisSVP() {
+
+    CarisSvpFile() 
+    : fileName( "" ) {
 
     }
 
-    ~CarisSVP() {
+    ~CarisSvpFile() {
         clearSVPs();
     }
 
@@ -147,9 +152,9 @@ public:
                 return false;
             }
 
-            //Read filename
-            std::string fname;
-            std::getline(inFile, fname);
+            //Read filename that is inside the file
+            // std::string fname;
+            std::getline(inFile, fileName);
 
             //Start reading SVP sections
             SoundVelocityProfile * currentSVP = NULL;
@@ -200,7 +205,12 @@ public:
 
         return true;
     }
+
+    const std::string & getFilename() const {
+        return fileName;
+    }
+
 };
 
-#endif /* CARISSVP_HPP */
+#endif /* CARISSVPFILE_HPP */
 
