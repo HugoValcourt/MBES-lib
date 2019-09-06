@@ -4,6 +4,7 @@ INCLUDES=-IC:\\Users\\cidco\\Library\\eigen
 VERSION=0.1.0
 
 FILES=..\\..\\src\\datagrams\\DatagramParser.cpp ..\\..\\src\\datagrams\\DatagramParserFactory.cpp ..\\..\\src\\datagrams\\s7k\\S7kParser.cpp ..\\..\\src\\datagrams\\kongsberg\\KongsbergParser.cpp ..\\..\\src\\datagrams\\xtf\\XtfParser.cpp ..\\..\\src\\utils\\NmeaUtils.cpp ..\\..\\src\\utils\\StringUtils.cpp ..\\..\\src\\sidescan\\SidescanPing.cpp
+FILESTEST=..\\..\\..\\src\\datagrams\\DatagramParser.cpp ..\\..\\..\\src\\datagrams\\DatagramParserFactory.cpp ..\\..\\..\\src\\datagrams\\s7k\\S7kParser.cpp ..\\..\\..\\src\\datagrams\\kongsberg\\KongsbergParser.cpp ..\\..\\..\\src\\datagrams\\xtf\\XtfParser.cpp ..\\..\\..\\src\\utils\\NmeaUtils.cpp ..\\..\\..\\src\\utils\\StringUtils.cpp ..\\..\\..\\src\\sidescan\\SidescanPing.cpp
 
 root=$(shell pwd)
 
@@ -23,7 +24,7 @@ default: prepare
 
 test: default
 	mkdir $(test_exec_dir)
-	call "%windows10_x64_BUILD_TOOLS_ROOT%\\VC\\Auxiliary\\Build\\vcvarsall.bat" x64 && cd build\\test\\bin &&cl ..\\..\\..\\test\\main.cpp $(FILES) $(INCLUDES) /EHsc /Fetests.exe
+	call "%windows10_x64_BUILD_TOOLS_ROOT%\\VC\\Auxiliary\\Build\\vcvarsall.bat" x64 && cd build\\test\\bin &&cl ..\\..\\..\\test\\main.cpp $(FILESTEST) $(INCLUDES) /EHsc /Fetests.exe
 	mkdir $(test_result_dir)
 	mkdir $(test_work_dir)
 	cd $(test_work_dir)
