@@ -13,12 +13,15 @@
 #define SIDESCANPING_HPP
 
 #include <vector>
+#include <cstdint>
+#include "../Position.hpp"
+
 
 class SidescanPing {
 public:
     SidescanPing();
     SidescanPing(const SidescanPing& orig);
-    virtual ~SidescanPing();
+    ~SidescanPing();
     
     void setDistancePerSample(double d){distancePerSample = d;};
     double getDistancePerSample(){ return distancePerSample;};
@@ -33,10 +36,19 @@ public:
     int getChannelNumber(){ return channelNumber;};
     void setChannelNumber(int channel){ channelNumber = channel;};
     
+    uint64_t getTimestamp() {return timestamp;};
+    void setTimestamp(uint64_t newTimestamp){ timestamp=newTimestamp;};
+    
+    Position * getPosition(){ return position;};
+    void       setPosition(Position * newPosition){position=newPosition;};
+    
+    
 private:
     std::vector<double> samples; //we will boil down all the types to double. This is not a pretty hack, but we need to support every sample type
-    double distancePerSample;
-    int channelNumber;
+    double      distancePerSample;
+    int         channelNumber;
+    uint64_t    timestamp;
+    Position *  position;
 };
 
 #endif /* SIDESCANPING_HPP */
